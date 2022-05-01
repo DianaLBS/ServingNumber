@@ -4,6 +4,7 @@ public class Node {
 	
 	//datos
 	private int number;
+	private int numCalls;
 	
 	//enlaces
 	private Node prev;
@@ -36,6 +37,12 @@ public class Node {
 	public void setNext(Node next) {
 		this.next = next;
 	}
-	
-	
+
+	public int getNumCalls() {
+		return numCalls;
+	}
+
+	public void setNumCalls(int numCalls) {
+		this.numCalls = numCalls;
+	}
 }

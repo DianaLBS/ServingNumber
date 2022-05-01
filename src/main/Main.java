@@ -1,19 +1,23 @@
 package main;
 
+
 import java.util.Scanner;
+
+import model.LinkedList;
+import model.Node;
 
 
 public class Main {
-	//public static BillBoardData data;
+	
+	public static LinkedList list;
 	public static Scanner sc;
 	
-	
 	public static void main(String[] args)  {
-		
+		list= new LinkedList();
 		sc= new Scanner (System.in);
-		//data =new BillBoardData();
 		
-		System.out.println("Welcome to the Serving NUmber program");
+		System.out.println("Welcome to the Serving Number program");
+		
 		showMenu();
 		
 	}
@@ -45,6 +49,7 @@ public class Main {
 					deleteTurn();
 				break;
 				case 0:
+					//list.print();
 					continuee=false;
 				break;
 				default:
@@ -54,24 +59,40 @@ public class Main {
 	}
 
 	private static void deleteTurn() {
-		// TODO Auto-generated method stub
-		
+		if(list.getCurrent()!=null && list.delete(list.getCurrent().getNumber())) {
+			if(list.getCurrent()!=null) {
+				list.setCurrent(list.getCurrent().getNext());
+			}
+			System.out.println("Turn successfully eliminated");
+		}else {
+			System.out.println("There are no turns to eliminate");
+		}
 	}
 
 	private static void passTurn() {
-		// TODO Auto-generated method stub
+		if(!list.passTurn()) {
+			System.out.println("There are no turns to pass");
+		}
 		
 	}
 
 	private static void showTurn() {
-		// TODO Auto-generated method stub
+		if(list.isEmpty()) {
+			System.out.println("No turns yet");
+		}else {
+			System.out.println("The current turn is: "+list.getCurrent().getNumber());
+		}
 		
 	}
 
 	private static void giveTurn() {
-		// TODO Auto-generated method stub
+		int turnNumber=1;
+		if(list.getTail()!=null) {
+			turnNumber=list.getTail().getNumber()+1;
+		}
+		list.addLast(new Node(turnNumber));
+		System.out.println("The new turn is: "+list.getTail().getNumber());
+		//list.print();
 		
 	}
-
-
 }
