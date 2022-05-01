@@ -98,19 +98,19 @@ public class LinkedList {
 			current=null;
 			return true;
 		}else if(value == head.getNumber() && node==head) {
-			System.out.println("a");
+			//System.out.println("a");
 			head.getNext().setPrev(tail);
 			head = node.getNext();
 			tail.setNext(head);
 			return true;
 		}else if(value == tail.getNumber() && node==tail) {
-			System.out.println("b");
+			//System.out.println("b");
 			tail.getPrev().setNext(head);
 			tail = node.getPrev();
 			head.setPrev(tail);
 			return true;
 		}else if(node.getNumber()==value) {
-			System.out.println("c");
+			//System.out.println("c");
 			node.getPrev().setNext(node.getNext());
 			node.getNext().setPrev(node.getPrev());
 			return true;
